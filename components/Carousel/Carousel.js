@@ -17,3 +17,115 @@
     <div class="right-button"> > </div>
   </div>
 */
+
+let imgArr = [
+  "mountains",
+  "computer",
+  "trees",
+  "turntable",
+]
+
+function carouselComponent(images){
+  //Elements 
+  const carousel = document.createElement("div");
+  const leftButton = document.createElement("div");
+  
+  //Append In order
+  carousel.appendChild(leftButton)
+
+  images.forEach(img => {
+    // console.log(img)
+    const imgItem = document.createElement("img");
+    imgItem.src = `./assets/carousel/${img}.jpeg`;
+
+    carousel.appendChild(imgItem);
+    
+
+  })
+  const rightButton = document.createElement("div");
+
+  //Classes
+  carousel.classList.add("carousel");
+  leftButton.classList.add("left-button");
+  rightButton.classList.add("right-button");
+
+  //Event Listners
+
+  rightButton.addEventListener("click", (event)=>{
+    // console.log(event)
+    imageShow(event);
+  })
+
+  leftButton.addEventListener("click", (event)=>{
+    // console.log(event)
+    imageShow(event);
+  })
+
+  //Append
+  carousel.appendChild(rightButton);
+  
+
+  return carousel
+}
+
+
+const carouselComplete = carouselComponent(imgArr)
+
+const carouselEntry = document.querySelector(".carousel-container");
+
+carouselEntry.appendChild(carouselComplete);
+
+
+//Image reference
+
+const imagesReference = document.querySelectorAll("img");
+
+// console.log(imagesReference);
+
+let count = 0;
+
+let selectedImg = imagesReference[count]
+selectedImg.style.display = "block";
+
+function imageShow(target){
+
+
+ 
+  // console.log(target.target.className);
+  
+  if(target.target.className == "right-button"){
+    // console.log("right", target)
+
+    selectedImg.style.display = "none";
+
+    count++;
+    if(count > 3){
+      count = 0;
+    }
+
+    // console.log(count)
+
+    selectedImg = imagesReference[count];
+
+    selectedImg.style.display = "block";
+
+  } else if (target.target.className == "left-button"){
+
+    // console.log("left")
+
+    selectedImg.style.display = "none";
+    count--;
+    
+    if(count < 0){
+      count = 3;
+    }
+
+    // console.log(count)
+    selectedImg = imagesReference[count];
+
+    selectedImg.style.display = "block";
+
+  }
+
+
+}

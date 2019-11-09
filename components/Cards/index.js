@@ -43,14 +43,14 @@ function lambdaArticles(){
     axios
     .get("https://lambda-times-backend.herokuapp.com/articles")
     .then(response =>{
-        console.log(response.data.articles);
 
+        // console.log(response.data.articles);
         // const articlesArray = Array.from(response.data);
         // console.log(articlesArray);
 
         //Loop over articles
         for(let article in response.data.articles){
-            console.log(article);
+            // console.log(article);
 
             //create array of all the articles of each type
             const articlesArr = response.data.articles[article].map(element => {
@@ -72,7 +72,7 @@ function lambdaArticles(){
     })
 }
 
-lambdaArticles();
+document.onload = lambdaArticles();
 
 function articleComponents(articleData){
     //Elements

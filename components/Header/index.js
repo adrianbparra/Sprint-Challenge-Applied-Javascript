@@ -26,9 +26,17 @@ function HeaderComponent() {
     headerCard.appendChild(hTitle);
     headerCard.appendChild(tempSpan);
 
+    //Content 
+    dateSpan.textContent = "SMARCH 28, 2019";
+    hTitle.textContent = "Lambda Times";
+    tempSpan.textContent = "98°";
+
+    console.log(headerCard)
+
     return headerCard
 };
 
 
 const headerContainer = document.querySelector(".header-container");
+
 headerContainer.appendChild(HeaderComponent());
