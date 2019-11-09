@@ -24,14 +24,44 @@ function LambdaTimes(){
     .get("https://lambda-times-backend.herokuapp.com/topics")
     .then(response =>{
 
-        console.log(response)
+        // console.log(response)
+        const topicArr = response.data.topics.map(item =>{ 
+
+            const newTopic = tabComponent(item);
+
+            topicsContainer.appendChild(newTopic)
+
+
+        })
+
         return response
     })
     .catch(error =>{
-        
+
         console.log(error)
     })
     
 }
 
-// LambdaTimes();
+document.onload = LambdaTimes();
+
+const topicsContainer = document.querySelector(".topics")
+
+
+
+
+function tabComponent(topicData){
+    //Elements
+    const topic = document.createElement("div");
+
+    //Classes
+    topic.classList.add("tab");
+
+    //Content 
+    topic.textContent = topicData;
+
+    return topic
+}
+
+
+// console.log(tabComponent("hello"))
