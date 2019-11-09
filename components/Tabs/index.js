@@ -19,20 +19,20 @@
 //  4: "node.js"
 
 
-function LambdaTimes(){
+function LambdaTimesTopics(){
     axios
     .get("https://lambda-times-backend.herokuapp.com/topics")
     .then(response =>{
 
         // console.log(response)
         const topicArr = response.data.topics.map(item =>{ 
-
-            const newTopic = tabComponent(item);
-
-            topicsContainer.appendChild(newTopic)
-
-
+            return item
         })
+
+        topicArr.forEach(topic => {
+            // tabComponent(topic);
+            topicsContainer.appendChild(tabComponent(topic))
+        });
 
         return response
     })
@@ -43,7 +43,7 @@ function LambdaTimes(){
     
 }
 
-document.onload = LambdaTimes();
+document.onload = LambdaTimesTopics();
 
 const topicsContainer = document.querySelector(".topics")
 
