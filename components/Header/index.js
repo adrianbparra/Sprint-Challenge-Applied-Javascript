@@ -31,7 +31,7 @@ function HeaderComponent() {
     hTitle.textContent = "Lambda Times";
     tempSpan.textContent = "98°";
 
-    console.log(headerCard)
+    // console.log(headerCard)
 
     return headerCard
 };

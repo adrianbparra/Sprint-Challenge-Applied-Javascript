@@ -63,6 +63,11 @@ function carouselComponent(images){
 
   //Append
   carousel.appendChild(rightButton);
+
+
+  //Content
+  leftButton.textContent = "<";
+  rightButton.textContent = ">"
   
 
   return carousel
@@ -88,9 +93,6 @@ let selectedImg = imagesReference[count]
 selectedImg.style.display = "block";
 
 function imageShow(target){
-
-
- 
   // console.log(target.target.className);
   
   if(target.target.className == "right-button"){
@@ -112,7 +114,7 @@ function imageShow(target){
   } else if (target.target.className == "left-button"){
 
     // console.log("left")
-
+   
     selectedImg.style.display = "none";
     count--;
     
